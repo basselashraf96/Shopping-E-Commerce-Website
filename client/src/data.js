@@ -42,3 +42,49 @@ export const categories = [
         title: 'LIGHT JACKETS'
     }
 ]
+
+export const products = [
+
+    {
+        id: 1,
+        img: 'https://www.pngarts.com/files/3/Black-Jacket-Transparent-Background-PNG.png',
+
+
+    },
+    {
+        id: 2,
+        img: 'https://www.freepnglogos.com/uploads/jacket-png/jacket-png-image-purepng-transparent-png-image-library-3.png',
+
+    },
+    {
+        id: 3,
+        img: 'https://www.pngall.com/wp-content/uploads/11/Pullover-Cloth-PNG-Images.png',
+
+    }, {
+        id: 4,
+        img: 'https://www.pngall.com/wp-content/uploads/11/Pullover-No-Background.png',
+
+
+    },
+    {
+        id: 5,
+        img: 'https://freepngimg.com/thumb/tshirt/7-2-t-shirt-png-hd.png',
+
+    },
+    {
+        id: 6,
+        img: 'https://www.pngplay.com/wp-content/uploads/6/Female-Clothes-Transparent-File.png',
+
+    }, {
+        id: 7,
+        img: 'https://freepngimg.com/thumb/categories/627.png',
+
+
+    },
+    {
+        id: 8,
+        img: 'https://i.pinimg.com/originals/b9/3a/69/b93a692c534bd22b3ffd27ffcdbf664f.png',
+
+    },
+
+]
