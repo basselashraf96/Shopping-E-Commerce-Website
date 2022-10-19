@@ -64,3 +64,136 @@
     background-color: #222222;
     color: white;
 }
+
+
+/********************************* Media Queries ************************************************/
+
+@media (max-width:1201px) {
+    #slider-container .slider .slider-img img {
+        height: 100%;
+    }
+    #slider-container .slider .slider-desc {
+        flex: 0 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #slider-container .slider .slider-desc p {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .slider {
+        flex-direction: column;
+    }
+    #slider-container .slider .slider-img {
+        flex: 0 0;
+        height: 80%;
+    }
+    .category {
+        height: 37vh;
+    }
+    .category-info h1 {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    .product {
+        min-width: 150px;
+    }
+    .product img {
+        height: 40%;
+    }
+    .footer-col {
+        padding: 10px 10px !important;
+    }
+    .footer-col>* {
+        margin-bottom: 5px;
+    }
+    .footer-circle {
+        margin-right: 20px;
+        width: 35px !important;
+        height: 35px !important;
+    }
+}
+
+@media (max-width:768px) {
+    #nav .pages {
+        font-size: 14px;
+        white-space: nowrap;
+    }
+    #slider-container {
+        display: none;
+    }
+    #categories-container {
+        flex-direction: column;
+    }
+    #products-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        padding: 20px;
+    }
+    .product {
+        min-width: 0px;
+    }
+    .product img {
+        height: 60%;
+    }
+    .newsletter-input {
+        width: 80% !important;
+    }
+    #newsletter-container p {
+        text-align: center;
+    }
+    #footer-container {
+        flex-direction: column;
+    }
+    .footer-col>* {
+        margin: 5px;
+    }
+    .footer-circle {
+        width: 40px !important;
+        height: 40px !important;
+    }
+}
+
+@media (max-width:480px) {
+    #home .deals h1 {
+        font-size: 16px;
+        padding: 10px;
+    }
+    #nav .center h1 {
+        font-size: 24px;
+    }
+    #nav .pages {
+        font-size: 14px;
+        white-space: nowrap;
+    }
+    #nav .website.language {
+        display: none;
+    }
+    #nav .search {
+        background-color: white;
+        display: flex;
+        align-items: center;
+        width: 70px;
+    }
+    #nav li {
+        padding: 0px 0px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+    #nav .left {
+        flex: 0;
+    }
+    .category-info h1 {
+        font-size: 32px;
+    }
+    #products-container {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+    }
+    .product {
+        min-width: 0;
+    }
+}

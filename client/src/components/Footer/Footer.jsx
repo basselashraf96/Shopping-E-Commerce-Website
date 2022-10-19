@@ -10,9 +10,7 @@ const Footer = () => {
         <h1>BASSEL</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
-          tempora nostrum porro culpa quam ab quaerat praesentium, odio dicta
-          reprehenderit sint dolore tenetur quasi, ipsum molestiae harum
-          expedita est alias.
+          tempora nostrum porro culpa quam ab quaerat praesentium, odio dicta.
         </p>
         <div className="footer-socials">
           <div className="footer-circle">
