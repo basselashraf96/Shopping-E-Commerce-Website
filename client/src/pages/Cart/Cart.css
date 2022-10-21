@@ -1,0 +1,173 @@
+#cart .deals {
+    width: 100%;
+    text-align: center;
+    background-color: #FB2576;
+    color: white;
+}
+
+.checkout-container {
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+#cart .deals h1 {
+    font-size: 24px;
+}
+
+.checkout-title {
+    padding: 20px;
+    text-align: center;
+    font-weight: 100
+}
+
+.checkout-title h1 {
+    font-weight: 500;
+}
+
+.continue-chechkout-btn-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    align-items: center;
+}
+
+#cart button {
+    margin-top: 0;
+}
+
+#cart button:hover {
+    box-shadow: none;
+}
+
+.continue-chechkout-btn-container>div {
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+}
+
+.bag-items {
+    display: inline-block;
+    width: 80%;
+}
+
+.order-summary {
+    display: inline-block;
+    width: 40%;
+    border: 1px solid rgb(207, 207, 207);
+}
+
+.bag-items>div {
+    display: flex;
+    height: 200px;
+    border-bottom: 1px solid rgb(207, 207, 207);
+}
+
+.bag-item-info>* {
+    margin-bottom: 10px;
+}
+
+.bag-item-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+}
+
+.bag-item-img>img {
+    height: 80%;
+    object-fit: contain;
+}
+
+.bag-item-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 40px;
+}
+
+.product-name-container {
+    display: flex;
+}
+
+#cart h2 {
+    font-weight: 400;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.product-id-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-id {
+    display: flex;
+}
+
+.product-qn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-color-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-color {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: blue;
+}
+
+.product-bag-price {
+    display: flex;
+    font-size: 34px;
+}
+
+.currency {
+    margin-right: 10px;
+}
+
+.product-bag-size {
+    display: flex;
+}
+
+.product-bag-checkout {
+    display: flex;
+}
+
+.order-summary {
+    padding: 20px;
+    height: 40%;
+    width: 400px;
+}
+
+.order-summary>* {
+    margin-bottom: 20px;
+}
+
+.order-summary h1 {
+    font-weight: 500;
+}
+
+.order-summary .product-bag-price {
+    font-size: 24px;
+}
+
+.subtotal,
+.est,
+.shipping,
+.total {
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkoutnow-btn {
+    width: 100%;
+    display: initial;
+}

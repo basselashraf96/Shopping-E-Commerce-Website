@@ -1,0 +1,33 @@
+#product-list .productlist-title h1 {
+    padding: 20px;
+}
+
+.filters {
+    padding: 20px;
+}
+
+#product-list .deals {
+    width: 100%;
+    text-align: center;
+    background-color: #FB2576;
+    color: white;
+}
+
+#product-list .deals h1 {
+    font-size: 24px;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+}
+
+#product-list label {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#product-list select {
+    margin-left: 20px;
+    padding: 10px;
+}

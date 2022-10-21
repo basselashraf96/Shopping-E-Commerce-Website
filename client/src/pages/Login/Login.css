@@ -1,0 +1,11 @@
+.login-container {
+    background: radial-gradient(circle at 10% 20%, rgb(248, 213, 214) 0%, rgb(243, 242, 229) 90%);
+}
+
+.login-form {
+    width: 30%;
+}
+
+.login-input {
+    width: 100%;
+}

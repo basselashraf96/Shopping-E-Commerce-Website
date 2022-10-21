@@ -69,6 +69,12 @@
 /********************************* Media Queries ************************************************/
 
 @media (max-width:1201px) {
+    #slider-container .slider .slider-desc h1 {
+        font-size: 40px;
+    }
+    .slider-desc button {
+        margin-top: 10px;
+    }
     #slider-container .slider .slider-img img {
         height: 100%;
     }
@@ -116,6 +122,27 @@
 }
 
 @media (max-width:768px) {
+    #nav .center {
+        justify-content: start;
+    }
+    #nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #nav .visible.search {
+        display: none;
+    }
+    #nav .hidden.search {
+        border-radius: 10px;
+        height: 40px;
+        width: 90%;
+        display: flex;
+        margin-bottom: 30px;
+    }
+    #nav .search input {
+        border-radius: 10px;
+    }
     #nav .pages {
         font-size: 14px;
         white-space: nowrap;

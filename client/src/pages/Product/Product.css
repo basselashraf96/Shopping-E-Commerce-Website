@@ -1,0 +1,139 @@
+#product .deals {
+    width: 100%;
+    text-align: center;
+    background-color: #FB2576;
+    color: white;
+}
+
+#product .deals h1 {
+    font-size: 24px;
+}
+
+.product-container {
+    width: 100%;
+    height: 100vh;
+}
+
+.product-container .wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+    justify-content: space-between;
+}
+
+.prduct-img-container {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    background-color: #F8F8F8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prduct-img-container img {
+    height: 80%;
+}
+
+.product-info {
+    padding: 0 50px;
+    flex: 1;
+}
+
+.product-info>* {
+    margin-bottom: 50px;
+}
+
+.product-info h1 {
+    font-weight: 300;
+}
+
+.product-info p {
+    font-size: 24px;
+}
+
+.price-container {
+    display: flex;
+    font-size: 64px;
+    font-weight: 100;
+}
+
+.price-container .currency {
+    margin-right: 20px;
+}
+
+.color-size-container {
+    display: flex;
+}
+
+.colors-available {
+    margin-right: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.colors-available h3 {
+    margin-right: 10px;
+    font-size: 24px;
+    font-weight: 300;
+}
+
+.colors {
+    display: flex;
+    justify-content: space-between;
+    width: 100px;
+}
+
+.color {
+    width: 25px;
+    height: 25px;
+    background-color: aqua;
+    border-radius: 50%;
+}
+
+.product-size {
+    display: flex;
+    align-items: center;
+}
+
+.product-size label {
+    font-size: 24px;
+    font-weight: 300;
+    margin-right: 20px;
+}
+
+.product-size select {
+    padding: 5px;
+    font-size: 16px;
+}
+
+.qn-cart-container {
+    display: flex;
+    align-items: center;
+}
+
+.qn-cart-container button {
+    margin-top: 0;
+}
+
+.qn-cart-container button:hover {
+    background-color: teal;
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.quantity-container {
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+}
+
+.qn {
+    text-align: center;
+    width: 50px;
+    padding: 5px;
+    border: 2px solid #00ffff8c;
+    border-radius: 10px;
+    font-size: 24px;
+}
