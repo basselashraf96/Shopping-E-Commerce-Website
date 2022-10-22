@@ -16,7 +16,8 @@ const verifyToken = (req, res, next) => {
             }
 
             req.user = user //! (user) here is the object of jwt.sign() in auth.js section which contains id and isAdmin
-            next();
+
+            next(); //! middlewares must provide another callback and not making a response it want stop the main operations which in this case next()
         })
     } else {
         return res.status(401).json('you are not authenticated')
@@ -28,7 +29,7 @@ const verifyTokenAndAuthorization = (req, res, next) => {
     verifyToken(req, res, () => {
         if (req.user.id === req.params.id || req.user.isAdmin) {
 
-            next(); //! you are allowed to perform crud operations because you are a logged in user with a token or your are the admin
+            next(); //! you are now allowed to perform crud operations because you are a logged in user with a token or your are the admin
         } else {
             res.status(403).json('You are not allowed to do that!')
         }
@@ -41,7 +42,7 @@ const verifyTokenAndAdmin = (req, res, next) => {
 
             next(); //! Only admin allowed to perform crud operations
         } else {
-            res.status(403).json('You are not allowed to do that!')
+            res.status(403).json('You are not allowed to do that only admin!')
         }
     })
 }

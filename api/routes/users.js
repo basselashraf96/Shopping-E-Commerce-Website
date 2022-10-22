@@ -57,9 +57,10 @@ router.get('/find/:id', verifyTokenAndAdmin, async(req, res) => {
 //TODO: GET ALL USERS
 router.get('/', verifyTokenAndAdmin, async(req, res) => {
     const query = req.query.new
+
     try {
-        const fetchedUsers = query ? await User.find({}).sort({ _id: -1 }).limit(1) : await User.find({})
-        const { password, ...others } = fetchedUsers._doc
+
+        const fetchedUsers = query ? await User.find({}).sort({ _id: -1 }).limit(5) : await User.find({});
         res.status(200).json(fetchedUsers)
     } catch (e) {
         res.status(500).json(e)
@@ -67,6 +68,52 @@ router.get('/', verifyTokenAndAdmin, async(req, res) => {
 
 })
 
+
+//TODO: GET USER STATS
+
+router.get('/stats', verifyTokenAndAdmin, async(req, res) => {
+
+    //! get current date and asign it to a variable
+    const date = new Date();
+
+    //! get the last year date by substracting 1 year from the current date year (2022 - 1 = 2021)
+    const lastYear = new Date(date.setFullYear(date.getFullYear() - 1))
+
+
+    try {
+
+        //! aggregate framework is use to make computed result database
+        const data = await User.aggregate([
+
+            //! ($match) is like filter method to extract some data from a collections
+            { $match: { createdAt: { $gte: lastYear } } },
+            {
+
+                //! ($project) is like showing only what you want to see from a collection you can [ <field>:0 to hide , <field>:1 to show , <field>: '$expression' to assign other fields expression to that field], _id is shown by default
+                $project: {
+
+                    //! ($month) to take only the month from the date
+                    month: { $month: "$createdAt" }
+                }
+            },
+            {
+                //! ($group) is to group fields with same name as one with a unique _id and do an expression on them
+                $group: {
+                    _id: '$month',
+
+                    //! ($sum) to get all months with the same value and add them together to get the total user created at the same month in last and current year
+                    total: { $sum: 1 }
+                }
+            }
+        ])
+        res.status(200).json(data)
+
+    } catch (e) {
+        res.status(500).json(e)
+    }
+
+
+})
 
 
 module.exports = router

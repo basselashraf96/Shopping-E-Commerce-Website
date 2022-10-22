@@ -37,10 +37,9 @@ router.post('/login', async(req, res) => {
 
             //! give every loggined user a json web token
             //! the jwt sign will make an object with two params id and isAdmin
-            //! to verify later on if the user is able to perform some crud or not
-            //! if he is a logged in user with userId has json token or if he is the admin (see verifyToken.js)
+            //! to verify later on if the user is able to perform some crud or not if he is a logged in user with userId that has json token or if he is the admin (see verifyToken.js)
 
-            const accessToken = jwt.sign({
+            const accessToken = jwt.sign({ //! every (generated) token has two parameters if its admin token or not and the userId and expiring time, the token is generated on every login
                 id: loginUser._id,
                 isAdmin: loginUser.isAdmin
             }, process.env.JWT_SECRET, { expiresIn: '3d' })
@@ -52,6 +51,7 @@ router.post('/login', async(req, res) => {
 
 
     } catch (e) {
+        //! status 500 means internal server problems
         res.status(500).json(e)
     }
 

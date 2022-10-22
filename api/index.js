@@ -3,6 +3,10 @@ const app = express()
 const mongoose = require('mongoose')
 const dotenv = require('dotenv').config()
 const users = require('./routes/users')
+const product = require('./routes/product')
+const cart = require('./routes/cart')
+const order = require('./routes/order')
+
 const auth = require('./routes/auth')
 
 mongoose.connect(process.env.DB_URL)
@@ -16,6 +20,9 @@ mongoose.connect(process.env.DB_URL)
 app.use(express.json())
 app.use('/api/auth', auth)
 app.use('/api/users', users)
+app.use('/api/products', product)
+app.use('/api/cart', cart)
+app.use('/api/order', order)
 
 const port = process.env.PORT || 4000
 
