@@ -7,6 +7,7 @@ const users = require('./routes/users')
 const product = require('./routes/product')
 const cart = require('./routes/cart')
 const order = require('./routes/order')
+const stripe = require('./routes/stripe')
 
 const auth = require('./routes/auth')
 
@@ -17,13 +18,16 @@ mongoose.connect(process.env.DB_URL)
     .catch(e => {
         console.log(e);
     })
+
 app.use(cors())
 app.use(express.json())
+
 app.use('/api/auth', auth)
 app.use('/api/users', users)
 app.use('/api/products', product)
 app.use('/api/cart', cart)
 app.use('/api/order', order)
+app.use('/api/checkout', stripe)
 
 const port = process.env.PORT || 4000
 

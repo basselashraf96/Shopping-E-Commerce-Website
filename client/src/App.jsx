@@ -4,6 +4,7 @@ import Product from "./pages/Product/Product";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import Cart from "./pages/Cart/Cart";
+import Success from "./pages/Success/Success";
 
 import { BrowserRouter, Routes, Route, Switch } from "react-router-dom";
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/register" exact element={<Register />} />
         <Route path="/login" exact element={<Login />} />
         <Route path="/cart" exact element={<Cart />} />
+        <Route path="/success" exact element={<Success />} />
       </Routes>
     </BrowserRouter>
   );

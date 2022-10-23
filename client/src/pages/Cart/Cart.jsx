@@ -5,8 +5,10 @@ import styled from "styled-components";
 import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import StripeCheckout from "react-stripe-checkout";
+import { useEffect, useState } from "react";
+import { userRequest } from "../../api";
 const ProductColor = styled.div`
   width: 25px;
   height: 25px;
@@ -17,7 +19,27 @@ const ProductColor = styled.div`
 const Cart = () => {
   //! useSelector is how you get your redux state
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
+
+  const [stripeToken, setStripeToken] = useState(null);
+  const navigate = useNavigate();
+
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
+
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await userRequest.post(`/checkout/payment`, {
+          tokenId: stripeToken.id,
+          amount: cart.total * 100,
+        });
+        navigate(`/success`, { state: res.data });
+      } catch (error) {}
+    };
+    stripeToken && makeRequest();
+  }, [stripeToken, cart.total, navigate]);
+
   return (
     <div id="cart">
       <Navbar />
@@ -114,7 +136,17 @@ const Cart = () => {
                 <div className="price">{cart.total}</div>
               </div>
             </div>
-            <button className="checkoutnow-btn">CHECKOUT NOW</button>
+            <StripeCheckout
+              name="Bassel Shop"
+              billingAddress
+              shippingAddress
+              description={`Your total is $${cart.total}`}
+              amount={cart.total * 100}
+              token={onToken}
+              stripeKey={process.env.REACT_APP_STRIPE}
+            >
+              <button className="checkoutnow-btn">CHECKOUT NOW</button>
+            </StripeCheckout>
           </div>
         </div>
       </div>
