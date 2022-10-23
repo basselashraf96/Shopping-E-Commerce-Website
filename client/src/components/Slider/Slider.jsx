@@ -8,6 +8,7 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import styled from "styled-components";
 
 import { sliderData } from "../../data";
+import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
   height: 100%;
@@ -48,9 +49,11 @@ const Slider = () => {
               <div className="slider-desc">
                 <h1>{item.title}</h1>
                 <p>{item.desc}</p>
-                <button>
-                  Shop Now <ArrowRightIcon />
-                </button>
+                <Link to="/products">
+                  <button>
+                    Shop Now <ArrowRightIcon />
+                  </button>
+                </Link>
               </div>
             </SliderCard>
           );

@@ -33,8 +33,12 @@ const ProductList = () => {
       <div className="filters">
         <div className="filter1">
           <label>Filter Products:</label>
-          <select name="color" onChange={(e) => handleFilters(e)}>
-            <option defaultValue>Color</option>
+          <select
+            defaultValue="Color"
+            name="color"
+            onChange={(e) => handleFilters(e)}
+          >
+            <option disabled>Color</option>
             <option>White</option>
             <option>Black</option>
             <option>Red</option>
@@ -43,8 +47,12 @@ const ProductList = () => {
             <option>Green</option>
             <option>Pink</option>
           </select>
-          <select name="size" onChange={(e) => handleFilters(e)}>
-            <option value="Size" defaultValue>
+          <select
+            defaultValue="Size"
+            name="size"
+            onChange={(e) => handleFilters(e)}
+          >
+            <option disabled value="Size">
               Size
             </option>
             <option>XS</option>

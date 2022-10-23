@@ -5,6 +5,7 @@ import styled from "styled-components";
 import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const ProductColor = styled.div`
   width: 25px;
@@ -29,7 +30,9 @@ const Cart = () => {
           <h1>YOUR BAG</h1>
         </div>
         <div className="continue-chechkout-btn-container">
-          <button>CONTINUE SHOPPING</button>
+          <Link to="/products">
+            <button>CONTINUE SHOPPING</button>
+          </Link>
           <div className="bag-navigation">
             <a>Shopping Bag({cart.quantity})</a>
             <a>Your Whishlist(0)</a>

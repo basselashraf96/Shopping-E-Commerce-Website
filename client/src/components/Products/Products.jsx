@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 const Products = ({ cat, sort, filters }) => {
   const [products, setProducts] = useState([]);
   const [filteredPorducts, setFilteredPorducts] = useState([]);
+  const [allProductsfilter, setAllProducstFilter] = useState([]);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -21,6 +22,7 @@ const Products = ({ cat, sort, filters }) => {
         );
 
         setProducts(res.data);
+        setAllProducstFilter(res.data);
       } catch (e) {}
     };
 
@@ -40,16 +42,37 @@ const Products = ({ cat, sort, filters }) => {
   }, [products, cat, filters]);
 
   useEffect(() => {
+    if (!cat) {
+      setAllProducstFilter(
+        products.filter((item) => {
+          return Object.entries(filters).every(([key, value]) => {
+            return item[key].includes(value);
+          });
+        })
+      );
+    }
+  }, [filters]);
+
+  useEffect(() => {
     if (sort === "newest") {
       setFilteredPorducts((prev) =>
+        [...prev].sort((a, b) => a.createdAt - b.createdAt)
+      );
+      setAllProducstFilter((prev) =>
         [...prev].sort((a, b) => a.createdAt - b.createdAt)
       );
     } else if (sort === "asc") {
       setFilteredPorducts((prev) =>
         [...prev].sort((a, b) => a.price - b.price)
       );
+      setAllProducstFilter((prev) =>
+        [...prev].sort((a, b) => a.price - b.price)
+      );
     } else {
       setFilteredPorducts((prev) =>
+        [...prev].sort((a, b) => b.price - a.price)
+      );
+      setAllProducstFilter((prev) =>
         [...prev].sort((a, b) => b.price - a.price)
       );
     }
@@ -81,7 +104,7 @@ const Products = ({ cat, sort, filters }) => {
               </div>
             );
           })
-        : products.map((item) => {
+        : allProductsfilter.map((item) => {
             return (
               <div key={item._id} className="product">
                 <div className="product-img">
