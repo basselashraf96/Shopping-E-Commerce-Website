@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv').config()
 const users = require('./routes/users')
@@ -16,7 +17,7 @@ mongoose.connect(process.env.DB_URL)
     .catch(e => {
         console.log(e);
     })
-
+app.use(cors())
 app.use(express.json())
 app.use('/api/auth', auth)
 app.use('/api/users', users)

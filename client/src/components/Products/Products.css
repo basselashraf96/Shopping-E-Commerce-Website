@@ -52,6 +52,7 @@
     height: 50px;
     border-radius: 50%;
     background-color: white;
+    color: black;
     opacity: 0;
     transition: all 0.3s;
 }

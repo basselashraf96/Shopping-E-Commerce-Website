@@ -82,14 +82,10 @@
 .colors {
     display: flex;
     justify-content: space-between;
-    width: 100px;
 }
 
-.color {
-    width: 25px;
-    height: 25px;
-    background-color: aqua;
-    border-radius: 50%;
+.colors>* {
+    margin-right: 3px;
 }
 
 .product-size {
@@ -136,4 +132,9 @@
     border: 2px solid #00ffff8c;
     border-radius: 10px;
     font-size: 24px;
+}
+
+.minus,
+.plus {
+    cursor: pointer;
 }

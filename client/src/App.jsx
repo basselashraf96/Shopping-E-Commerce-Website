@@ -5,11 +5,20 @@ import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import Cart from "./pages/Cart/Cart";
 
+import { BrowserRouter, Routes, Route, Switch } from "react-router-dom";
+
 function App() {
   return (
-    <div>
-      <Cart />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" exact element={<Home />} />
+        <Route path="/products/:category" exact element={<ProductList />} />
+        <Route path="/product/:id" exact element={<Product />} />
+        <Route path="/register" exact element={<Register />} />
+        <Route path="/login" exact element={<Login />} />
+        <Route path="/cart" exact element={<Cart />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

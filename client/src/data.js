@@ -28,22 +28,25 @@ export const categories = [
     {
         id: 1,
         img: 'https://thumbs.dreamstime.com/b/girl-trendy-look-copy-space-beauty-fashion-retro-model-teen-checkered-shirt-jeans-vintage-style-denim-hair-casual-child-151934295.jpg',
-        title: 'SHIRT STYLE'
+        title: 'SHIRT STYLE',
+        category: 'shirts'
 
     },
     {
         id: 2,
         img: 'https://thumbs.dreamstime.com/b/woman-model-casual-summer-red-clothes-sweater-no-makeup-horns-hairstyle-isolated-gray-portrait-beautiful-cute-108791294.jpg',
-        title: 'PULOVER  LOVE'
+        title: 'PULOVER  LOVE',
+        category: 'pulovers'
     },
     {
         id: 3,
         img: 'https://media3.newlookassets.com/i/newlook/589577730M4/womens/clothing/jackets-coats/green-suedette-biker-jacket.jpg?strip=true&qlt=80&w=720',
-        title: 'LIGHT JACKETS'
+        title: 'LIGHT JACKETS',
+        category: 'jackets'
     }
 ]
 
-export const products = [
+export const productsFake = [
 
     {
         id: 1,

@@ -117,13 +117,6 @@
     align-items: center;
 }
 
-.product-color {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background-color: blue;
-}
-
 .product-bag-price {
     display: flex;
     font-size: 34px;
