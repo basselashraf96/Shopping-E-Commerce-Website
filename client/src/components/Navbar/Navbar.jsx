@@ -30,8 +30,13 @@ const Navbar = () => {
         </div>
         <div className="right">
           <ul className="pages">
-            <li>REGISTER</li>
-            <li>SIGN IN</li>
+            <Link to="/register">
+              <li>REGISTER</li>
+            </Link>
+            <Link to="/login">
+              <li>SIGN IN</li>
+            </Link>
+
             <li>
               <Link to="/cart">
                 <Badge badgeContent={quantity} color="primary">
