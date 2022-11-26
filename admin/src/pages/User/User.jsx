@@ -5,8 +5,30 @@ import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
 import MailOutlineOutlinedIcon from "@mui/icons-material/MailOutlineOutlined";
 import LocationSearchingOutlinedIcon from "@mui/icons-material/LocationSearchingOutlined";
 import PublishIcon from "@mui/icons-material/Publish";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "../../redux/apiCalls";
+const noAvatarImg =
+  "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png";
 const User = () => {
+  const [inputs, setInputs] = useState({});
+  const location = useLocation();
+  const userId = location.pathname.split("/")[2];
+  const dispatch = useDispatch();
+  const user = useSelector((state) =>
+    state.user.users.find((user) => user._id === userId)
+  );
+  const handleClick = (e) => {
+    e.preventDefault();
+    updateUser(userId, { ...inputs }, dispatch);
+  };
+  const handleChange = (e) => {
+    setInputs((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+  console.log(user);
   return (
     <div className="user">
       <div className="userTitleContainer">
@@ -18,38 +40,30 @@ const User = () => {
       <div className="userContainer">
         <div className="userShow">
           <div className="userShowTop">
-            <img
-              src="https://pbs.twimg.com/media/D8dDZukXUAAXLdY.jpg"
-              alt=""
-              className="userShowImg"
-            />
+            <img src={user.img || noAvatarImg} alt="" className="userShowImg" />
             <div className="userShowTopTitle">
-              <span className="userShowUsername">Anna Becker</span>
-              <span className="userShowUserTitle">Software Engineer</span>
+              <span className="userShowUsername">{user.fullName}</span>
             </div>
           </div>
           <div className="userShowBotton">
             <span className="userShowTitle">Account Details</span>
             <div className="userShowInfo">
               <PermIdentityIcon className="userShowIcon" />
-              <span className="userShowInfoTitle">annaback99</span>
+              <span className="userShowInfoTitle">{user.username}</span>
             </div>
-            <div className="userShowInfo">
-              <CalendarMonthOutlinedIcon className="userShowIcon" />
-              <span className="userShowInfoTitle">10.12.1996</span>
-            </div>
+
             <span className="userShowTitle">Contact Details</span>
             <div className="userShowInfo">
               <PhoneIphoneOutlinedIcon className="userShowIcon" />
-              <span className="userShowInfoTitle">+1 234 567</span>
+              <span className="userShowInfoTitle">+{user.phone}</span>
             </div>
             <div className="userShowInfo">
               <MailOutlineOutlinedIcon className="userShowIcon" />
-              <span className="userShowInfoTitle">annaback99@gmail.com</span>
+              <span className="userShowInfoTitle">{user.email}</span>
             </div>
             <div className="userShowInfo">
               <LocationSearchingOutlinedIcon className="userShowIcon" />
-              <span className="userShowInfoTitle">NYC | USA</span>
+              <span className="userShowInfoTitle">{user.address}</span>
             </div>
           </div>
         </div>
@@ -60,40 +74,50 @@ const User = () => {
               <div className="userUpdateItem">
                 <label>Username</label>
                 <input
+                  onChange={handleChange}
                   type="text"
-                  placeholder="annaback99"
+                  placeholder={user.username}
                   className="userUpdateInput"
+                  name="username"
                 />
               </div>
               <div className="userUpdateItem">
                 <label>Fullname</label>
                 <input
+                  onChange={handleChange}
+                  placeholder={user.fullName}
+                  name="fullName"
                   type="text"
-                  placeholder="Anna Becker"
                   className="userUpdateInput"
                 />
               </div>
               <div className="userUpdateItem">
                 <label>Email</label>
                 <input
+                  onChange={handleChange}
+                  placeholder={user.email}
+                  name="email"
                   type="text"
-                  placeholder="annaback99@gmail.com"
                   className="userUpdateInput"
                 />
               </div>
               <div className="userUpdateItem">
                 <label>Phone</label>
                 <input
+                  onChange={handleChange}
+                  placeholder={user.phone}
+                  name="phone"
                   type="text"
-                  placeholder="+1 234 567"
                   className="userUpdateInput"
                 />
               </div>
               <div className="userUpdateItem">
                 <label>Address</label>
                 <input
+                  onChange={handleChange}
+                  placeholder={user.address}
+                  name="address"
                   type="text"
-                  placeholder="NYC | USA"
                   className="userUpdateInput"
                 />
               </div>
@@ -102,7 +126,7 @@ const User = () => {
               <div className="userUpdateUpload">
                 <img
                   className="userUpdateImg"
-                  src="https://pbs.twimg.com/media/D8dDZukXUAAXLdY.jpg"
+                  src={user.img || noAvatarImg}
                   alt="image"
                 />
                 <label htmlFor="file">
@@ -110,7 +134,9 @@ const User = () => {
                 </label>
                 <input type="file" id="file" style={{ display: "none" }} />
               </div>
-              <button className="userUpdateButton">Update</button>
+              <button onClick={handleClick} className="userUpdateButton">
+                Update
+              </button>
             </div>
           </form>
         </div>

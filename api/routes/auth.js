@@ -10,6 +10,10 @@ router.post('/register', async(req, res) => {
     const newUser = new User({
         username: req.body.username,
         email: req.body.email,
+        address: req.body.address,
+        img: req.body.img,
+        fullName: req.body.fullName,
+        phone: req.body.phone,
         password: await bcrypt.hash(req.body.password.toString(), parseInt(process.env.SALT_ROUNDS)),
     })
     try {

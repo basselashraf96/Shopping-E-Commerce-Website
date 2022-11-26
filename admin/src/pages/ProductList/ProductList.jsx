@@ -16,6 +16,7 @@ const ProductList = () => {
   const handleDelete = (id) => {
     deleteProducts(id, dispatch);
   };
+  console.log(products);
   const columns = [
     { field: "_id", headerName: "ID", width: 220 },
     {

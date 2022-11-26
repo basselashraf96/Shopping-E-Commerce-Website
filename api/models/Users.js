@@ -23,7 +23,19 @@ const UserSchema = new mongoose.Schema({
     },
     img: {
         type: String
-    }
+    },
+    fullName: {
+        type: String,
+        required: true
+    },
+    address: {
+        type: String,
+        required: true
+    },
+    phone: {
+        type: Number,
+        required: true
+    },
 
 }, { timestamps: true })
 

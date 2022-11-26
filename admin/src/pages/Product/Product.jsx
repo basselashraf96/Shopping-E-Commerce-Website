@@ -1,18 +1,23 @@
 import "./Product.css";
 import { Link, useLocation } from "react-router-dom";
 import Chart from "../../components/Chart/Chart";
-import { productData } from "../../dummyData";
 import PublishIcon from "@mui/icons-material/Publish";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useMemo } from "react";
 import { useEffect } from "react";
 import { userRequest } from "../../api";
+import { useDispatch } from "react-redux";
+import { updateProducts } from "../../redux/apiCalls";
 const Product = () => {
+  const [inputs, setInputs] = useState({});
+  const [cat, setCat] = useState([]);
+  const [size, setSize] = useState([]);
+  const [color, setColor] = useState([]);
   const location = useLocation();
   const productId = location.pathname.split("/")[2];
   const [pStats, setPStats] = useState([]);
-
+  const dispatch = useDispatch();
   const product = useSelector((state) =>
     state.product.products.find((product) => product._id === productId)
   );
@@ -52,7 +57,30 @@ const Product = () => {
     };
     getStats();
   }, [productId, MONTHS]);
-  console.log(pStats);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    updateProducts(
+      productId,
+      { ...inputs, categories: cat, size, color },
+      dispatch
+    );
+  };
+  const handleChange = (e) => {
+    setInputs((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+  const handleCat = (e) => {
+    setCat(e.target.value.split(","));
+  };
+  const handleSize = (e) => {
+    setSize(e.target.value.split(","));
+  };
+  const handleColor = (e) => {
+    setColor(e.target.value.split(","));
+  };
+
   return (
     <div className="product">
       <div className="productTitleContainer">
@@ -94,13 +122,49 @@ const Product = () => {
         <form className="productForm">
           <div className="productFormLeft">
             <label>Product Name</label>
-            <input type="text" placeholder={product.title} />
+            <input
+              name="title"
+              onChange={handleChange}
+              type="text"
+              placeholder={product.title}
+            />
             <label>Product Description</label>
-            <input type="text" placeholder={product.desc} />
+            <input
+              name="desc"
+              onChange={handleChange}
+              type="text"
+              placeholder={product.desc}
+            />
             <label>Product Price</label>
-            <input type="text" placeholder={product.price} />
+            <input
+              name="price"
+              onChange={handleChange}
+              type="text"
+              placeholder={product.price}
+            />
+            <label>Categories</label>
+            <input
+              name="categories"
+              type="text"
+              placeholder="jeans,skirts"
+              onChange={handleCat}
+            />
+            <label>Size</label>
+            <input
+              name="size"
+              type="text"
+              placeholder="M,XL"
+              onChange={handleSize}
+            />
+            <label>Color</label>
+            <input
+              name="color"
+              type="text"
+              placeholder="Yellow,Red"
+              onChange={handleColor}
+            />
             <label>in stock</label>
-            <select name="inStock" id="inStock">
+            <select name="inStock" onChange={handleChange} id="inStock">
               <option value="true">Yes</option>
               <option value="false">No</option>
             </select>
@@ -113,7 +177,9 @@ const Product = () => {
               </label>
               <input type="file" id="file" style={{ display: "none" }} />
             </div>
-            <button className="productButton">Update</button>
+            <button onClick={handleClick} className="productButton">
+              Update
+            </button>
           </div>
         </form>
       </div>
