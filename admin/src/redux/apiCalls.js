@@ -11,6 +11,9 @@ import {
     updateUserStart,
     updateUserSucceful,
     updateUserFailure,
+    addUserStart,
+    addUserSuccess,
+    addUserFailure,
 } from "./userRedux"
 import { publicRequest, userRequest } from '../api'
 
@@ -102,5 +105,14 @@ export const updateUser = async(id, user, dispatch) => {
         dispatch(updateUserSucceful({ id, user: res.data }))
     } catch (error) {
         dispatch(updateUserFailure())
+    }
+}
+export const addUser = async(user, dispatch) => {
+    dispatch(addUserStart());
+    try {
+        const res = await userRequest.post(`/auth/register`, user)
+        dispatch(addUserSuccess(res.data))
+    } catch (error) {
+        dispatch(addUserFailure())
     }
 }

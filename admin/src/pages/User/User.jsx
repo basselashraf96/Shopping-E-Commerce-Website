@@ -9,9 +9,20 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../redux/apiCalls";
+import { updateProducts } from "../../redux/apiCalls";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import app from "../../firebase";
+
 const noAvatarImg =
   "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png";
+
 const User = () => {
+  const [file, setFile] = useState(null);
   const [inputs, setInputs] = useState({});
   const location = useLocation();
   const userId = location.pathname.split("/")[2];
@@ -21,14 +32,57 @@ const User = () => {
   );
   const handleClick = (e) => {
     e.preventDefault();
-    updateUser(userId, { ...inputs }, dispatch);
+    if (file) {
+      const fileName = new Date().getTime() + file.name;
+      const storage = getStorage(app);
+      const storageRef = ref(storage, fileName);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+      // Register three observers:
+      // 1. 'state_changed' observer, called any time the state changes
+      // 2. Error observer, called on failure
+      // 3. Completion observer, called on successful completion
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          // Observe state change events such as progress, pause, and resume
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+          }
+        },
+        (error) => {
+          // Handle unsuccessful uploads
+        },
+        () => {
+          // Handle successful uploads on complete
+          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            const user = {
+              ...inputs,
+              img: downloadURL,
+            };
+            updateUser(userId, user, dispatch);
+          });
+        }
+      );
+    } else {
+      updateUser(userId, { ...inputs }, dispatch);
+    }
   };
   const handleChange = (e) => {
     setInputs((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
   };
-  console.log(user);
+
   return (
     <div className="user">
       <div className="userTitleContainer">
@@ -132,7 +186,12 @@ const User = () => {
                 <label htmlFor="file">
                   <PublishIcon className="userUpdateIcon" />
                 </label>
-                <input type="file" id="file" style={{ display: "none" }} />
+                <input
+                  type="file"
+                  id="file"
+                  onChange={(e) => setFile(e.target.files[0])}
+                  style={{ display: "none" }}
+                />
               </div>
               <button onClick={handleClick} className="userUpdateButton">
                 Update

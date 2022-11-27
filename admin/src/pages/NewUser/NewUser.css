@@ -55,3 +55,9 @@
     margin-top: 30px;
     cursor: pointer;
 }
+
+.image-firbase {
+    border: none !important;
+    outline: none;
+    padding: 0 10px !important;
+}
