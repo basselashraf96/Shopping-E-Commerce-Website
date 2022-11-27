@@ -2,8 +2,7 @@ import SideBar from "./components/SideBar/SideBar";
 import TopBar from "./components/TopBar/TopBar";
 import Home from "./pages/Home/Home";
 import "./App.css";
-
-import { BrowserRouter, Route, Routes, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import UserList from "./pages/UserList/UserList";
 import User from "./pages/User/User";
 import NewUser from "./pages/NewUser/NewUser";
@@ -13,16 +12,24 @@ import NewProduct from "./pages/NewProduct/NewProduct";
 import Login from "./pages/Login/Login";
 
 function App() {
-  const admin = JSON.parse(
-    JSON.parse(localStorage.getItem("persist:root")).user
-  ).currentUser.isAdmin;
+  const admin = () => {
+    if (
+      JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
+        .currentUser.isAdmin
+    ) {
+      return JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
+        .currentUser.isAdmin;
+    } else {
+      return "";
+    }
+  };
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/login">
           <Login />
         </Route>
-        {admin && (
+        {admin() && (
           <>
             <TopBar />
             <div className="container">

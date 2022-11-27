@@ -2,6 +2,7 @@ import {
     loginFailure,
     loginStart,
     loginSuccess,
+    loginOut,
     getUsersStart,
     getUsersSucceful,
     getUsersFailure,
@@ -42,6 +43,9 @@ export const login = async(dispatch, user) => {
     } catch (error) {
         dispatch(loginFailure())
     }
+}
+export const logout = async(dispatch, user) => {
+    dispatch(loginOut())
 }
 export const getProducts = async(dispatch) => {
     dispatch(getProductStart());

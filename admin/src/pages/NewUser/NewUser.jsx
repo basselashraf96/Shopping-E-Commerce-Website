@@ -79,7 +79,7 @@ const NewUser = () => {
             onChange={handleChange}
             name="username"
             type="text"
-            placeholder="john"
+            placeholder="username"
           />
         </div>
         <div className="newUserItem">
@@ -88,7 +88,7 @@ const NewUser = () => {
             onChange={handleChange}
             name="fullName"
             type="text"
-            placeholder="John Snow"
+            placeholder="full name"
           />
         </div>
         <div className="newUserItem">
@@ -97,7 +97,7 @@ const NewUser = () => {
             onChange={handleChange}
             name="email"
             type="email"
-            placeholder="John@gmail.com"
+            placeholder="Email"
           />
         </div>
         <div className="newUserItem">
@@ -115,7 +115,7 @@ const NewUser = () => {
             onChange={handleChange}
             name="phone"
             type="text"
-            placeholder="+1 123 1456"
+            placeholder="phone number"
           />
         </div>
         <div className="newUserItem">
@@ -124,7 +124,7 @@ const NewUser = () => {
             onChange={handleChange}
             name="address"
             type="text"
-            placeholder="NYC | USA"
+            placeholder="address"
           />
         </div>
         <button onClick={handleClick} className="newUserButton">

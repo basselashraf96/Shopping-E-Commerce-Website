@@ -12,25 +12,39 @@ import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutline
 import WorkOutlineOutlinedIcon from "@mui/icons-material/WorkOutlineOutlined";
 import ErrorOutlinedIcon from "@mui/icons-material/ErrorOutlined";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 const SideBar = () => {
+  const [index, setIndex] = useState(0);
+  const handleClick = (index) => {
+    setIndex(index);
+  };
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
-            <Link to="/">
-              <li className="sidebarListitem active">
+            <Link className="link" to="/">
+              <li
+                onClick={() => handleClick(0)}
+                className={`sidebarListitem ${index === 0 ? "active" : null}`}
+              >
                 <LineStyleOutlinedIcon className="sidebarIcon" />
                 Home
               </li>
             </Link>
 
-            <li className="sidebarListitem">
+            <li
+              onClick={() => handleClick(1)}
+              className={`sidebarListitem ${index === 1 ? "active" : null}`}
+            >
               <TimelineOutlinedIcon className="sidebarIcon" />
               Analytics
             </li>
-            <li className="sidebarListitem">
+            <li
+              onClick={() => handleClick(2)}
+              className={`sidebarListitem ${index === 2 ? "active" : null}`}
+            >
               <TrendingUpOutlinedIcon className="sidebarIcon" />
               Sales
             </li>
@@ -40,22 +54,34 @@ const SideBar = () => {
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
             <Link to="/users" className="link">
-              <li className="sidebarListitem ">
+              <li
+                onClick={() => handleClick(3)}
+                className={`sidebarListitem ${index === 3 ? "active" : null}`}
+              >
                 <PersonOutlineOutlinedIcon className="sidebarIcon" />
                 Users
               </li>
             </Link>
             <Link to="/products" className="link">
-              <li className="sidebarListitem">
+              <li
+                onClick={() => handleClick(12)}
+                className={`sidebarListitem ${index === 12 ? "active" : null}`}
+              >
                 <StorefrontOutlinedIcon className="sidebarIcon" />
                 Products
               </li>
             </Link>
-            <li className="sidebarListitem">
+            <li
+              onClick={() => handleClick(4)}
+              className={`sidebarListitem ${index === 4 ? "active" : null}`}
+            >
               <AttachMoneyOutlinedIcon className="sidebarIcon" />
               Transactions
             </li>
-            <li className="sidebarListitem">
+            <li
+              onClick={() => handleClick(5)}
+              className={`sidebarListitem ${index === 5 ? "active" : null}`}
+            >
               <EqualizerOutlinedIcon className="sidebarIcon" />
               Reports
             </li>
@@ -64,15 +90,24 @@ const SideBar = () => {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Notifications</h3>
           <ul className="sidebarList">
-            <li className="sidebarListitem ">
+            <li
+              onClick={() => handleClick(6)}
+              className={`sidebarListitem ${index === 6 ? "active" : null}`}
+            >
               <EmailOutlinedIcon className="sidebarIcon" />
               Mail
             </li>
-            <li className="sidebarListitem">
+            <li
+              onClick={() => handleClick(7)}
+              className={`sidebarListitem ${index === 7 ? "active" : null}`}
+            >
               <DynamicFeedOutlinedIcon className="sidebarIcon" />
               Feedback
             </li>
-            <li className="sidebarListitem">
+            <li
+              onClick={() => handleClick(8)}
+              className={`sidebarListitem ${index === 8 ? "active" : null}`}
+            >
               <ChatBubbleOutlineOutlinedIcon className="sidebarIcon" />
               Messages
             </li>
@@ -81,15 +116,24 @@ const SideBar = () => {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Staff</h3>
           <ul className="sidebarList">
-            <li className="sidebarListitem ">
+            <li
+              onClick={() => handleClick(9)}
+              className={`sidebarListitem ${index === 9 ? "active" : null}`}
+            >
               <WorkOutlineOutlinedIcon className="sidebarIcon" />
               Manage
             </li>
-            <li className="sidebarListitem">
+            <li
+              onClick={() => handleClick(10)}
+              className={`sidebarListitem ${index === 10 ? "active" : null}`}
+            >
               <TimelineOutlinedIcon className="sidebarIcon" />
               Analytics
             </li>
-            <li className="sidebarListitem">
+            <li
+              onClick={() => handleClick(11)}
+              className={`sidebarListitem ${index === 11 ? "active" : null}`}
+            >
               <ErrorOutlinedIcon className="sidebarIcon" />
               Reports
             </li>

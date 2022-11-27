@@ -1,15 +1,18 @@
 import Chart from "../../components/Chart/Chart";
 import FeaturedInfo from "../../components/FeaturedInfo/FeaturedInfo";
 import "./Home.css";
-import { userData } from "../../dummyData";
 import WidgetSm from "../../components/WidgetSm/WidgetSm";
 import WidgetLg from "../../components/WidgetLg/WidgetLg";
 import { useMemo, useState } from "react";
 import { useEffect } from "react";
 import { userRequest } from "../../api";
+import { Link } from "react-router-dom";
+import { logout } from "../../redux/apiCalls";
+import { useDispatch } from "react-redux";
 
 const Home = () => {
   const [userStats, setUserStats] = useState([]);
+  const dispatch = useDispatch();
   const MONTHS = useMemo(
     () => [
       "Jan",
@@ -27,6 +30,10 @@ const Home = () => {
     ],
     []
   );
+  const handleClick = () => {
+    logout(dispatch);
+  };
+
   useEffect(() => {
     const getStats = async () => {
       try {
@@ -44,6 +51,12 @@ const Home = () => {
 
   return (
     <div className="home">
+      <Link to="/login">
+        <button onClick={handleClick} className="signOut">
+          Sign Out
+        </button>
+      </Link>
+
       <FeaturedInfo />
       <Chart
         data={userStats}

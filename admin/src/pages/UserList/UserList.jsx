@@ -59,6 +59,10 @@ const UserList = () => {
   ];
   return (
     <div className="userList">
+      <Link to="/newUser">
+        <button className="createUser">Create a User</button>
+      </Link>
+
       <DataGrid
         disableSelectionOnClick
         rows={users}

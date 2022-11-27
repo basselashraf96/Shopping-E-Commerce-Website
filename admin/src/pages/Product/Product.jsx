@@ -159,20 +159,22 @@ const Product = () => {
           </div>
           <div className="productInfoBottom">
             <div className="productInfoItem">
-              <span className="productInfoKey">id</span>
+              <span className="productInfoKey">id:</span>
               <span className="productInfoValue">{product._id}</span>
             </div>
           </div>
           <div className="productInfoBottom">
             <div className="productInfoItem">
               <span className="productInfoKey">sales</span>
-              <span className="productInfoValue">5265</span>
+              <span className="productInfoValue">1</span>
             </div>
           </div>
           <div className="productInfoBottom">
             <div className="productInfoItem">
               <span className="productInfoKey">in stock:</span>
-              <span className="productInfoValue">{product.inStock}</span>
+              <span className="productInfoValue">{`${
+                product.inStock ? "Yes" : "No"
+              }`}</span>
             </div>
           </div>
         </div>

@@ -83,7 +83,7 @@ const NewProduct = () => {
           <input
             name="title"
             type="text"
-            placeholder="Apple Airpods"
+            placeholder="Title"
             onChange={handleChange}
           />
         </div>
