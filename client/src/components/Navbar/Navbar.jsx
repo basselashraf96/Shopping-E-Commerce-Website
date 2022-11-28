@@ -3,13 +3,18 @@ import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import Badge from "@mui/material/Badge";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logOut } from "../../redux/apiCalls";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
   //! useSelector is how you get your redux state
   const quantity = useSelector((state) => state.cart.quantity);
-
+  const user = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    logOut(dispatch);
+  };
   return (
     <div id="nav">
       <div className="nav-container">
@@ -30,12 +35,20 @@ const Navbar = () => {
         </div>
         <div className="right">
           <ul className="pages">
-            <Link to="/register">
-              <li>REGISTER</li>
-            </Link>
-            <Link to="/login">
-              <li>SIGN IN</li>
-            </Link>
+            {!user && (
+              <Link to="/register">
+                <li>REGISTER</li>
+              </Link>
+            )}
+            {!user ? (
+              <Link to="/login">
+                <li>SIGN IN</li>
+              </Link>
+            ) : (
+              <Link onClick={handleClick} to="/">
+                <li>SIGN OUT</li>
+              </Link>
+            )}
 
             <li>
               <Link to="/cart">

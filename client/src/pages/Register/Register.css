@@ -49,3 +49,35 @@
 .register-container p {
     font-weight: 500;
 }
+
+.uploadProfilePicContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.uploadProfilePicContainer>input {
+    visibility: hidden;
+}
+
+.uploadProfilePicContainer>label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.uploadIcon {
+    margin-left: 20px !important;
+}
+
+.profilePicContainer {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profilePicContainer>img {
+    height: 100%;
+}
