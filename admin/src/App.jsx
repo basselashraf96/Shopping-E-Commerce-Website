@@ -20,8 +20,6 @@ function App() {
       return state.user.currentUser.isAdmin;
     }
   });
-
-  console.log(admin);
   return (
     <BrowserRouter>
       <Switch>

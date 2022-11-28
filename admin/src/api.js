@@ -14,7 +14,6 @@ const TOKEN = () => {
         return ''
     }
 }
-console.log(TOKEN)
 export const publicRequest = axios.create({
     baseURL: BASE_URL,
 })

@@ -17,7 +17,6 @@ const UserList = () => {
   useEffect(() => {
     getUsers(dispatch);
   }, [dispatch]);
-  console.log(users);
   const columns = [
     { field: "_id", headerName: "ID", width: 200 },
     {

@@ -11,13 +11,11 @@ const FeaturedInfo = () => {
       try {
         const res = await userRequest.get("order/income");
         setIncome(res.data);
-        console.log(res.data);
         setPercentage((res.data[1].total * 100) / res.data[0].total - 100);
       } catch (error) {}
     };
     getIncome();
   }, []);
-  console.log(percentage);
   return (
     <div className="featured">
       <div className="featuredItem">
