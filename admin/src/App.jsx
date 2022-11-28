@@ -15,10 +15,10 @@ function App() {
   const admin = () => {
     if (
       JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
-        .currentUser.isAdmin
+        .currentUser
     ) {
       return JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
-        .currentUser.isAdmin;
+        .currentUser;
     } else {
       return "";
     }

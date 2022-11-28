@@ -17,7 +17,7 @@ const UserList = () => {
   useEffect(() => {
     getUsers(dispatch);
   }, [dispatch]);
-
+  console.log(users);
   const columns = [
     { field: "_id", headerName: "ID", width: 200 },
     {
@@ -67,7 +67,7 @@ const UserList = () => {
         disableSelectionOnClick
         rows={users}
         columns={columns}
-        pageSize={5}
+        pageSize={10}
         getRowId={(row) => row._id}
         rowsPerPageOptions={[5]}
         checkboxSelection
