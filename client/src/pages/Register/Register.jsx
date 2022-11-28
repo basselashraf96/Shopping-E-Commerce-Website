@@ -182,7 +182,7 @@ const Register = () => {
           />
         </div>
         {!isPassword && (
-          <h4 style={{ color: "red" }}>Passwords doesnt match!</h4>
+          <h4 style={{ color: "red" }}>Passwords don't match!</h4>
         )}
         <p>
           By creating an account i consent to the processing of my personal data

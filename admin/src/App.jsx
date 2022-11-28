@@ -10,26 +10,25 @@ import ProductList from "./pages/ProductList/ProductList";
 import Product from "./pages/Product/Product";
 import NewProduct from "./pages/NewProduct/NewProduct";
 import Login from "./pages/Login/Login";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function App() {
-  const admin = () => {
-    if (
-      JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
-        .currentUser
-    ) {
-      return JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
-        .currentUser;
-    } else {
-      return "";
+  const admin = useSelector((state) => {
+    if (state.user.currentUser) {
+      return state.user.currentUser.isAdmin;
     }
-  };
+  });
+
+  console.log(admin);
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/login">
           <Login />
         </Route>
-        {admin() && (
+        {admin && (
           <>
             <TopBar />
             <div className="container">
